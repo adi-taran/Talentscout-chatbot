@@ -1,122 +1,89 @@
-TalentScout Hiring Assistant Chatbot
-The TalentScout Hiring Assistant Chatbot is a user-friendly web application that streamlines the initial stages of technical hiring. Built using Streamlit and integrated with OpenAI’s GPT models, it allows recruiters to collect candidate details and generate personalized technical interview questions based on their tech stack.
+# TalentScout Hiring Assistant Chatbot
 
-#Features
+## Project Overview
 
-1. Collects essential candidate details such as name, email, phone, experience, desired position, and location.
-2. Generates 3–5 technical interview questions tailored to the candidate's specified tech stack.
-3. User-friendly interface built with Streamlit.
-4. Multilingual support (optional enhancement).
-5. Optional sentiment analysis for evaluating candidate responses.
+The TalentScout Hiring Assistant Chatbot is designed to streamline the technical interview process for recruiters. It assists by collecting candidate information and evaluating their technical knowledge based on their skills and experience. It generates interview questions tailored to the candidate's tech stack and evaluates the candidate's responses on a scale of 1 to 10.
 
+The chatbot asks the candidate for the following information:
 
-#Tech Stack
+- Full Name
+- Email Address
+- Phone Number
+- Experience
+- Desired Position
+- Current Location
+- Tech Stack
 
-1. Python
-2. Streamlit for the user interface
-3. OpenAI GPT-3.5/4 for generating interview questions
-4. dotenv for environment variable management
+Once the information is gathered, the chatbot generates technical questions, evaluates answers, and provides an average score for the candidate's performance. The candidate's details and the evaluation score are saved in a text file for future reference.
 
+## Features
 
-#Prerequisites
+- **Personalized Candidate Information Collection**: The chatbot collects all necessary details about the candidate including their full name, email, phone number, experience, desired position, and tech stack.
+- **Technical Interview Questions Generation**: Based on the candidate's tech stack, the chatbot generates a set of 5 tailored interview questions.
+- **Evaluation of Candidate Responses**: The chatbot evaluates the candidate's answers on a scale of 1 to 10.
+- **Candidate Data Storage**: The candidate's personal information and their interview performance (average score) are saved in a text file for future review.
+- **Customizable Tech Stack**: The candidate can select from a wide variety of tech stacks related to frontend, backend, database, version control, tools, and hardware.
 
-1. Python 3.8 or above installed on your system.
-2. OpenAI API key.
-3. Streamlit installed.
+## Technologies Used
 
+- **Streamlit**: A Python library for building interactive web applications.
+- **Google Generative AI (Gemini-1.5-Flash)**: Used to generate the technical interview questions and evaluate the answers.
+- **AWS Secrets Manager**: To securely retrieve API keys.
+- **Phone Numbers**: The `phonenumbers` library to validate phone numbers.
+- **Boto3**: AWS SDK for Python used to interact with AWS services.
+- **Python**: The programming language used to implement the application.
 
-#Installation and Setup
+## Setup and Installation
 
-1. Clone the repository:
+### Prerequisites
 
-git clone https://github.com/your-repo/talentscout-chatbot.git
-cd talentscout-chatbot
+- Python 3.7+
+- Install the following Python libraries:
 
-2. Create a virtual environment:
+## Installation Models
 
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
-
-3. Install the dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 
-4. Add your OpenAI API key:
+## Configuration
 
-Create a .env file in the project root and add the following:
-OPENAI_API_KEY=sk-xxxxxx
-Alternatively, if using st.secrets, edit secrets.toml:
-[default]
-OPENAI_API_KEY = "sk-xxxxxx"
+- Set up your API key in the AWS Secrets Manager and ensure it's accessible via the `TalentScoutAPIKey` secret name.
+- If not using Secrets Manager, you can hardcode your API key by replacing `API_KEY` in the code with your actual key.
 
-5. Run the application:
+## Running the Application
 
-streamlit run main.py 
+```bash
+streamlit run app.py
+```
 
+## Workflow
 
-#Usage
+- The chatbot begins by collecting basic candidate information (name, email, phone number, etc.).
 
-1. Open the web app in your browser at http://localhost:8501.
-2. Fill in the required candidate details:
-Full Name
-Email Address
-Phone Number
-Years of Experience
-Desired Position 
-Current Location
-Tech Stack
-3. Click Submit to generate technical interview questions.
-4. View and copy the generated questions.
+- Based on the tech stack selected, the chatbot generates interview questions tailored to the candidate's skills.
 
+- The candidate answers each question, and the chatbot evaluates the responses.
 
-#File Structure
+- At the end of the interview, the chatbot calculates the average score and saves the candidate's data in a text file.
 
-├── main.py                # Main application code
-├── requirements.txt       # Python dependencies
-├── .env                   # API key (not included in version control)
-├── secrets.toml           # Optional: Streamlit secrets configuration
-├── README.md              # Project documentation
-└── .gitignore             # Ignored files/folders
+- The chatbot allows the option to restart the process or end the chat.
 
+## Example Candidate Flow
+- **Step 1:** Enter Full Name
+- **Step 2:** Enter Email Address
+- **Step 3:** Enter Phone Number (with country code)
+- **Step 4:** Enter Experience
+- **Step 5:** Select Desired Position
+- **Step 6:** Enter Current Location
+- **Step 7:** Select Tech Stack (Frontend, Backend, Database, etc.)
+- **Step 8:** Answer Technical Interview Questions
+- **Step 9:** Receive Evaluation Score and Save Data
 
-#Requirements
+## Contributing
 
-The following packages are required and listed in requirements.txt:
+If you'd like to contribute to this project, feel free to submit a pull request. We welcome any improvements, bug fixes, and additional features.
 
-streamlit
-openai
-python-dotenv
+## License
 
-Install them with:
-
-pip install -r requirements.txt
-
-
-#Troubleshooting
-
-Error: You tried to access openai.ChatCompletion, but this is no longer supported
-Ensure you have upgraded the OpenAI package to the latest version:
-pip install --upgrade openai
-Ensure you are using openai.ChatCompletion.create for interacting with GPT models.
-
-#Common Issues
-
-Environment variable not found: Verify the .env file or st.secrets configuration.
-Streamlit app not starting: Ensure all dependencies are installed, and you're using the correct Python version.
-
-
-#Future Enhancements
-
-Add sentiment analysis for evaluating candidate responses.
-Integrate multilingual support for global hiring.
-Store candidate details and responses in a database.
-
-
-#License
-
-This project is licensed under the MIT License.
-
-#Contact
-
-For queries or contributions, feel free to reach out to Aditya Jain.
-
+This project is licensed under the MIT `License`
