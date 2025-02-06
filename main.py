@@ -24,7 +24,7 @@ def get_api_key():
         print(f"Error retrieving secret: {e}")
         return None
 
-API_KEY = get_api_key() or os.getenv("GOOGLE_API_KEY", "AIzaSyA81qenAmxKxvm86ItOigAYSmzHQZZcwL4")
+API_KEY = get_api_key() or os.getenv("GOOGLE_API_KEY", "Write your API Key here")
 
 
 
